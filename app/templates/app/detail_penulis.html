@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ penulis.nama }}{% endblock %}
+
+{% block body %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h3>Detail Penulis</h3>
+<div class="d-flex d-flex-inline">
+  <span class="pe-2">Nama Penulis:
+    <h5>
+      {{ penulis.nama|title }}
+    </h5>
+  </span>
+</div>
+<hr>
+{% for buku in penulis.penulis_buku.all %}
+<div class="small">
+  ID Buku: {{ buku.id }}
+</div>
+<div>
+  Judul Buku: {{ buku.judul }}
+</div>
+<hr>
+{% endfor %}
+
+<p>
+  <a href="{% url 'app:update_buku_penulis' pk=penulis.id %}" role=button class="btn btn-primary w-100 mb-2">
+    Edit Buku Penulis
+  </a>
+  <a href="{% url 'app:penulis' %}" role=button class="btn btn-secondary w-100">
+    Cancel
+  </a>
+</p>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+
+<h3>Koleksi Buku</h3>
+
+<a href="{% url 'app:penulis' %}" role="button" class="btn btn-primary w-100 mb-2">Semua Penulis</a>
+<a href="{% url 'app:tambah_penulis' %}" role="button" class="btn btn-secondary w-100">Tambah Penulis</a>
+
+{% endblock %}

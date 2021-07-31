@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Daftar Penulis{% endblock %}
+
+{% block body %}
+
+<h3>Daftar Penulis</h3>
+
+{% if penulis_list %}
+<ul class="list-group">
+  {% for penulis in penulis_list %}
+  <li class="list-group-item">
+    <a href="{% url 'app:detail_penulis' penulis.id %}" class="text-reset">{{ penulis.nama }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Tidak ada data penulis </p>
+{% endif %}
+
+<p class="pt-2">
+  <a href="{% url 'app:home' %}" class="btn btn-secondary w-100" role="button">Cancel</a>
+</p>
+
+{% endblock %}
